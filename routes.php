@@ -87,9 +87,10 @@ else if ($_SESSION["logado"] == true) {
 		$cProFun = new ControllerProjetoFuncionario();
 		$cProFun->setProjetoFuncionario();
 
-		
-		
+		header("Location: cadastraFuncionario");
 
+
+	
 
 		
 	}
@@ -103,13 +104,20 @@ else if ($_SESSION["logado"] == true) {
 	else if ($action == 'editaFuncionario' && $_SESSION["isAdmin"] == true) {
         $cFunc = new ControllerFuncionario();
         $depDAO = new DepartamentoDAO();
+        $proDAO = new ProjetoDAO();
 
         $departamentos = $depDAO->getAllDepartamentos();
+        $projetos = $proDAO->getAllProjetos();
+
+
         require_once $_SESSION["root"].'php/View/ViewEditaFuncionario.php';
     }
     else if ($action == 'postEditaFuncionario' && $_SESSION["isAdmin"] == true) {
         $cFunc = new ControllerFuncionario();
         $cFunc->corrigeFuncionario();
+        $cProFun = new ControllerProjetoFuncionario();
+        $cProFun->corrigeProjetoFuncionario();
+
         header("Location: exibeFuncionarios");
 	}
 

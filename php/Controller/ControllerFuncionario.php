@@ -29,7 +29,7 @@ class ControllerFuncionario {
 			$_SESSION["flash"]["login"]=$funcionario->getLogin();
 			$_SESSION["flash"]["salario"]=$funcionario->getSalario();
 		}
-		include_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';
+		//include_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';
 	}
 
 	function deleteFunc ($id) {
@@ -63,3 +63,4 @@ class ControllerFuncionario {
         include_once $_SESSION["root"].'php/View/ViewExibeFuncionario.php';
     }
 }
+?>

@@ -59,7 +59,7 @@ include $_SESSION["root"].'includes/header.php';
 							<?php
 							foreach ($projetos as $value) {
 								echo '<option';
-								if($value->getId() == $_POST["idProjeto"]){echo' selected';}
+								
 								echo ' value="' . $value->getId() . '">' . $value->getNome() . '</option>';
 							}
 							?>

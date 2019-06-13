@@ -31,3 +31,4 @@ class ControllerDepartamento {
 		include_once $_SESSION["root"].'php/View/ViewCadastraDepartamento.php';
 	}
 }
+?>

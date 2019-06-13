@@ -238,3 +238,4 @@ class ModelFuncionario {
         return $this;
     }
 }
+?>

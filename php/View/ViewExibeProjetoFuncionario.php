@@ -8,13 +8,13 @@ include $_SESSION["root"].'includes/header.php';
 		<?php include $_SESSION["root"].'includes/menu.php';?>
 		<!-- fim menu -->	
 		<div id="principal">
-			<h1 class="text-center">Funcionarios dos projetos</h1>
+			<h1 class="text-center">Funcionários dos projetos</h1>
 			<table class="table table-striped">
 			<?php 
 				//$funcionarios foi criado no controller que chamou essa classe;
 				echo "<tr>";
 					echo "<th>Nome do projeto</th>";
-					echo "<th>Nome do funcionario</th>";
+					echo "<th>Nome do funcionário</th>";
 				echo "</tr>";
 				if($projetosFuncionarios){
 					foreach ($projetosFuncionarios as $value) {

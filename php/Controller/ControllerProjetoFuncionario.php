@@ -1,7 +1,9 @@
 <?php
 
 include_once $_SESSION["root"].'php/DAO/ProjetoFuncionarioDAO.php';
+
 include_once $_SESSION["root"].'php/Model/ModelProjetoFuncionario.php';
+include_once $_SESSION["root"].'php/Model/ModelFuncionario.php';
 
 class ControllerProjetoFuncionario {
 
@@ -53,8 +55,29 @@ class ControllerProjetoFuncionario {
 			//Var temp de feedback	
 			
 		}
-		include_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';
+		//include_once $_SESSION["root"].'php/View/ViewCadastraFuncionario.php';
 	}
 	
+	function corrigeProjetoFuncionario () {
+
+        $proFunDAO = new ProjetoFuncionarioDAO();
+        $funcionario = new ModelFuncionario();
+        $funcionario->setFuncionarioFromPOST2();
+        $resultado = $proFunDAO->corrigeProjetoFuncionario($funcionario);
+
+        if ($resultado) {
+            $_SESSION["flash"]["msg"]="Funcionário Atualizado com Sucesso";
+            $_SESSION["flash"]["sucesso"] = true;
+        }
+
+        else {
+            $_SESSION["flash"]["msg"]="Erro! Tente novamente!";
+            $_SESSION["flash"]["sucesso"] = false;
+        }
+
+        include_once $_SESSION["root"].'php/View/ViewExibeFuncionario.php';
+    }
+
 		
 }
+?>

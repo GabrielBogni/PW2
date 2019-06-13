@@ -42,10 +42,7 @@ class FuncionarioDAO {
         $statement = $conn->prepare("SELECT idFuncionario FROM funcionarios where login = :login"); 
         $statement->bindValue(":login", $func->getLogin());
         
-         echo "<pre>";
-        var_dump($func->getLogin());
-        echo "</pre>";
-        $statement->execute();
+                $statement->execute();
 
         //linhas recebe todas as tuplas retornadas do banco     
         $linhas = $statement->fetchAll();
@@ -83,8 +80,7 @@ class FuncionarioDAO {
                 :login,
                 :senha,
                 :idPermissao,
-                :idDepartamento)"
-        	;
+                :idDepartamento)";
 
             //pego uma ref da conexão
 			$instance = DatabaseConnection::getInstance();
@@ -174,3 +170,4 @@ class FuncionarioDAO {
     }
 
 }
+?>

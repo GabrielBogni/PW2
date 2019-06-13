@@ -4,7 +4,7 @@ include_once $_SESSION["root"].'php/Model/ModelProjetoFuncionario.php';
 
 class ProjetoFuncionarioDAO {
     
-    
+
     function getAllProjetosFuncionarios() {
         $instance = DatabaseConnection::getInstance();
         $conn = $instance->getConnection();
@@ -46,6 +46,34 @@ class ProjetoFuncionarioDAO {
         } catch (PDOException $e) {
             echo "Erro ao inserir na base de dados. " . $e->getMessage();
         }
+    }
+
+    function corrigeProjetoFuncionario ($func) {
+        try {
+            $sql = "UPDATE projeto_funcionario SET
+               idProjeto = :idProjeto
+               WHERE idFuncionario = :idFuncionario";
+
+
+           
+            //pego uma ref da conexão
+            $instance = DatabaseConnection::getInstance();
+            $conn = $instance->getConnection();
+            //Utilizando Prepared Statements
+           
+            
+            $statement = $conn->prepare($sql);
+              
+            $statement->bindValue(":idFuncionario", $func->getIdFuncionario());
+            $statement->bindValue(":idProjeto",$_POST['idProjeto']);
+            
+            return $statement->execute();
+            
+
+        } catch (PDOException $e) {
+            echo "Erro ao atualizar informações na base de dados.".$e->getMessage();
+        }
+
     }
    
 }
